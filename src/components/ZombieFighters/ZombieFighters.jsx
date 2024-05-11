@@ -8,7 +8,8 @@ const FighterListItems = ({fighter}) => {
         setTeam([fighter])
 
         money < fighter.price ? 
-        alert("get more money") : setMoney(money - fighter.price)
+        alert("get more money") : setTeam([...team, fighter]);
+            setMoney(money - fighter.price)
         
         console.log(team)
         console.log(money)

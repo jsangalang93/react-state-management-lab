@@ -5,6 +5,7 @@ import FighterListItems from './components/ZombieFighters/ZombieFighters';
 
 
 const App = () => {
+
 const [team, setTeam] = useState([]);
 const [money, setMoney] = useState(100);
 const zombieFighters = (
