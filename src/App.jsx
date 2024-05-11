@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
 import './App.css';
+import FighterListItems from './components/ZombieFighters/ZombieFighters';
+
 
 const App = () => {
-
 const [team, setTeam] = useState([]);
 const [money, setMoney] = useState(100);
-const [zombieFighters, setZombieFighters] = (
+const zombieFighters = (
   [
     {
       name: 'Survivor',
@@ -84,8 +85,20 @@ const [zombieFighters, setZombieFighters] = (
 
 
   return (
-    <h1>Hello world!</h1>
+    <>
+    <h1>ReactVille Zombie Invasion</h1>
+    <p>Current balance: ${money}.00</p>
+    <ul>
+      {zombieFighters.map((fighter) => (
+        <FighterListItems 
+        key={fighter.name} 
+        fighter={fighter} />
+      ))}
+    </ul>
+    
+    </>
   );
+  
 }
 
-export default App
+export default App;
