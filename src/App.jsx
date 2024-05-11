@@ -88,6 +88,7 @@ const zombieFighters = (
     <>
     <h1>ReactVille Zombie Invasion</h1>
     <p>Current balance: ${money}.00</p>
+    
     <ul>
       {zombieFighters.map((fighter) => (
         <FighterListItems 
