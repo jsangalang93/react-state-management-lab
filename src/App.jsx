@@ -85,12 +85,12 @@ const zombieFighters = (
     },
   ]
 )
-const handleRemove = (fighter) => {
-  team.filter((fighter) => fighter !== selectedFighter);
-  
-  setMoney(money + fighter.price);
-  setStrength(strength - fighter.strength);
-  setAgility(agility - fighter.agility);
+const handleRemove = (selectedFighter) => {
+  const newTeam = team.filter((fighter) => fighter !== selectedFighter);
+  setTeam(team);
+  setMoney(money + selectedFighter.price);
+  setStrength(strength - selectedFighter.strength);
+  setAgility(agility - selectedFighter.agility);
 }
 
 const handleFighter = (fighter) => {
