@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const TeamListItems = ({teamFighter, handleFighter, fighter}) => {
+const TeamListItems = ({teamFighter, handleFighter, fighter, handleRemove}) => {
         return (
             <>
             
@@ -12,7 +12,7 @@ const TeamListItems = ({teamFighter, handleFighter, fighter}) => {
                     <p>Price: ${teamFighter.price}.00</p>
                     <p>Strength: {teamFighter.strength}</p>
                     <p>Agility: {teamFighter.agility}</p>
-                    <button onClick={() => handleFighter(fighter)}>Remove {teamFighter.name}</button>
+                    <button onClick={() => handleRemove(fighter)}>Remove </button>
                 </div>
             </li>
             </>
