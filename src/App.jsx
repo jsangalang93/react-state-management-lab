@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './App.css';
 import FighterListItems from './components/ZombieFighters/ZombieFighters';
-
+import TeamListItems from './components/Team/Team.jsx';
 
 const App = () => {
 
@@ -83,7 +83,17 @@ const zombieFighters = (
   ]
 )
 
+const handleFighter = (fighter) => {
 
+  setTeam([fighter]);
+  money < fighter.price ? 
+  alert("get more money") : setTeam([...team, fighter]);
+      setMoney(money - fighter.price)
+  
+  console.log(team)
+  console.log(money)
+  
+}
 
   return (
     <>
@@ -94,7 +104,19 @@ const zombieFighters = (
       {zombieFighters.map((fighter) => (
         <FighterListItems 
         key={fighter.name} 
-        fighter={fighter} />
+        fighter={fighter}
+        handleFighter={handleFighter}
+         />
+      ))}
+    </ul>
+    <h1>Your Current Team</h1>
+    <ul>
+      {team.map((teamFighter) => (
+        <TeamListItems
+        key={teamFighter.name}
+        teamFighter={teamFighter}
+        />
+        
       ))}
     </ul>
     

@@ -1,20 +1,8 @@
 import { useState } from 'react';
 
 
-const FighterListItems = ({fighter}) => {
-    const [team, setTeam] = useState([]);
-    const [money, setMoney] = useState(100);
-    const handleFighter = (fighter) => {
-        setTeam([fighter])
 
-        money < fighter.price ? 
-        alert("get more money") : setTeam([...team, fighter]);
-            setMoney(money - fighter.price)
-        
-        console.log(team)
-        console.log(money)
-        
-      }
+const FighterListItems = ({fighter, handleFighter}) => {
 
     return (
         <>
