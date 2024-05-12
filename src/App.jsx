@@ -8,6 +8,8 @@ const App = () => {
 
 const [team, setTeam] = useState([]);
 const [money, setMoney] = useState(100);
+const [strength, setStrength] = useState(0);
+const [agility, setAgility] = useState(0);
 const zombieFighters = (
   [
     {
@@ -83,13 +85,23 @@ const zombieFighters = (
   ]
 )
 
+const CalcStrength = () => {
+  team.map((fighter) => {
+    setStrength(strength + fighter.strength);
+      console.log('calc strength triggered');
+  }
+)}
+
+
+
 const handleFighter = (fighter) => {
 
-  setTeam([fighter]);
+  // setTeam([fighter]);
   money < fighter.price ? 
-  alert("get more money") : setTeam([...team, fighter]);
-      setMoney(money - fighter.price)
-  
+  alert("get more money") : 
+  (function (){setTeam([...team, fighter,]); 
+  setMoney(money - fighter.price)})();
+  CalcStrength();
   console.log(team)
   console.log(money)
   
@@ -106,20 +118,40 @@ const handleFighter = (fighter) => {
         key={fighter.name} 
         fighter={fighter}
         handleFighter={handleFighter}
+
          />
       ))}
     </ul>
     <h1>Your Current Team</h1>
+    {
+    team.length === 0 ? <p>Please draft a fighter to view your team.</p> :
     <ul>
       {team.map((teamFighter) => (
         <TeamListItems
         key={teamFighter.name}
         teamFighter={teamFighter}
+        handleFighter = {handleFighter}
+        fighter= {teamFighter}
         />
         
+
       ))}
     </ul>
-    
+    }
+    <ul>
+      <p>Total Team Strength: 
+        {team.reduce((Strength, fighter) => 
+          Strength + fighter.strength, 0
+        )}
+      </p>
+    </ul>
+    <ul>
+      <p>Total Team Agility: 
+        {team.reduce((Agility, fighter) => 
+        Agility + fighter.agility, 0
+        )}
+      </p>
+    </ul>
     </>
   );
   

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const TeamListItems = ({teamFighter}) => {
+const TeamListItems = ({teamFighter, handleFighter, fighter}) => {
         return (
             <>
             
