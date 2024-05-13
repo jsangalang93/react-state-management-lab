@@ -11,6 +11,7 @@ const [money, setMoney] = useState(100);
 const [strength, setStrength] = useState(0);
 const [agility, setAgility] = useState(0);
 const [selectedFighter, setSelectedFighter] = useState(null);
+const [newTeam, setNewTeam] = useState([])
 const zombieFighters = (
   [
     {
@@ -87,7 +88,7 @@ const zombieFighters = (
 )
 const handleRemove = (selectedFighter) => {
   const newTeam = team.filter((fighter) => fighter !== selectedFighter);
-  setTeam(team);
+  setTeam(newTeam);
   setMoney(money + selectedFighter.price);
   setStrength(strength - selectedFighter.strength);
   setAgility(agility - selectedFighter.agility);
@@ -97,9 +98,12 @@ const handleFighter = (fighter) => {
 
   // setTeam([fighter]);
   money < fighter.price ? 
-  alert("get more money by removing a fighter.") : 
+  alert("Earn more money by removing a fighter.") : 
   (function (){setTeam([...team, fighter,]); 
   setMoney(money - fighter.price)})();
+  setStrength(strength + fighter.strength)
+  setAgility(agility + fighter.agility)
+  
   console.log(team)
   console.log(money)
   
@@ -116,7 +120,6 @@ const handleFighter = (fighter) => {
         key={fighter.name} 
         fighter={fighter}
         handleFighter={handleFighter}
-
          />
       ))}
     </ul>
@@ -140,8 +143,9 @@ const handleFighter = (fighter) => {
     <ul>
       <p>Total Team Strength: 
         {team.reduce((Strength, fighter) => 
-          Strength + fighter.strength, 0
+        Strength + fighter.strength, 0
         )}
+
       </p>
     </ul>
     <ul>
